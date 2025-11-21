@@ -1,40 +1,44 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
+:root{
+  --bg:#f5f6fa; --card:#ffffff; --muted:#6b7280; --accent:#007bff; --danger:#ff4d4f;
+  --glass: rgba(255,255,255,0.6);
 }
+[data-theme='dark']{ --bg:#0f1724; --card:#0b1220; --muted:#9ca3af; --accent:#3390ff; --glass: rgba(255,255,255,0.03); color:#e6eef8 }
+*{box-sizing:border-box}
+html,body,#app{height:100%;margin:0;background:var(--bg);font-family:Inter,system-ui,Arial}
+#app{display:flex;height:100%}
+#sidebar{width:340px;background:var(--card);padding:18px;box-shadow:2px 8px 30px rgba(11,22,40,0.06);display:flex;flex-direction:column;gap:14px;z-index:2000}
+.title{font-size:20px;font-weight:700}
+.section{background:linear-gradient(180deg,var(--glass),transparent);padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,0.03)}
+label{display:block;font-weight:600;font-size:13px;margin-bottom:8px}
+select,input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);font-size:14px}
+.row{display:flex;gap:8px;align-items:center}
+.gap{gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.05);background:transparent;cursor:pointer}
+.btn.primary{background:var(--accent);color:white;border:none;box-shadow:0 6px 18px rgba(3,102,214,0.12)}
+.btn.ghost{background:transparent}
+.small{font-size:12px}
+.muted{color:var(--muted);font-size:13px}
+#output{background:rgba(255,255,255,0.9);border-radius:8px;padding:10px;height:120px;overflow:auto;border:1px solid rgba(0,0,0,0.04)}
+#map{flex:1;height:100%}
 
-#map {
-  position: absolute;
-  top: 0;
-  left: 250px;
-  right: 0;
-  bottom: 0;
-}
+/* Stops list */
+.stopsList{min-height:40px;display:flex;flex-direction:column;gap:8px}
+.stopItem{background:linear-gradient(180deg,var(--card),transparent);padding:8px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(0,0,0,0.03)}
+.stopLabel{font-weight:600;font-size:13px}
+.iconBtn{background:transparent;border:none;cursor:pointer;padding:6px;border-radius:6px}
 
-#controls {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 240px;
-  height: 100%;
-  background: #ffffff;
-  border-right: 1px solid #ccc;
-  padding: 15px;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
+/* Bottom sheet */
+.bottomSheet{position:fixed;left:18px;right:18px;bottom:18px;border-radius:12px;box-shadow:0 20px 40px rgba(2,6,23,0.2);background:var(--card);z-index:3000;max-height:60vh;display:flex;flex-direction:column;overflow:hidden;transition:transform .28s cubic-bezier(.22,.9,.37,1),opacity .2s}
+.bottomSheet.hidden{transform:translateY(110%);opacity:0}
+.sheetHeader{display:flex;align-items:center;gap:8px;padding:10px;border-bottom:1px solid rgba(0,0,0,0.04)}
+.dragHandle{width:36px;height:6px;background:#e6eefc;border-radius:6px;margin-right:6px}
+.sheetTitle{font-weight:700;flex:1}
+.sheetContent{padding:12px;overflow:auto}
+.footer{font-size:12px;color:var(--muted);margin-top:auto}
 
-.section {
-  margin-bottom: 15px;
-}
+/* Small animations */
+.stopItem{transition:transform .18s,box-shadow .18s}
+.stopItem:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(2,6,23,0.08)}
 
-#output {
-  background: #f4f4f4;
-  padding: 10px;
-  height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-}
+/* responsive */
+@media(max-width:800px){#sidebar{width:100%;position:fixed;top:0;left:0;right:0}#map{margin-top:320px}}
