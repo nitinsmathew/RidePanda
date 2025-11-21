@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ride Demo Prototype</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="controls">
+    <h2>Ride Demo Prototype</h2>
+
+    <div class="section">
+      <label>Mode:</label>
+      <select id="mode">
+        <option value="driver">Driver</option>
+        <option value="rider">Rider</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <button id="clear">Clear</button>
+      <button id="publish">Publish Ride</button>
+      <button id="search">Search Matches</button>
+    </div>
+
+    <div class="section">
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
