@@ -1,43 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ride Demo Prototype</title>
-
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ride Demo — Professional</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="app.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="controls">
-    <h2>Ride Demo Prototype</h2>
+  <div id="app">
+    <aside id="sidebar">
+      <div class="title">🚗 Ride Demo</div>
 
-    <div class="section">
-      <label>Mode:</label>
-      <select id="mode">
-        <option value="driver">Driver</option>
-        <option value="rider">Rider</option>
-      </select>
-    </div>
+      <div class="section">
+        <label for="mode">Mode</label>
+        <select id="mode" aria-label="mode">
+          <option value="driver">Driver — add route stops</option>
+          <option value="rider">Rider — pick pickup & drop</option>
+        </select>
+        <div class="row">
+          <label for="date">When (optional)</label>
+          <input id="date" type="datetime-local"/>
+        </div>
+      </div>
 
-    <div class="section">
-      <button id="clear">Clear</button>
-      <button id="publish">Publish Ride</button>
-      <button id="search">Search Matches</button>
-    </div>
+      <div class="section">
+        <div class="row gap">
+          <button id="clear" class="btn ghost"><span class="material-icons">delete</span> Clear</button>
+          <button id="publish" class="btn primary"><span class="material-icons">cloud_upload</span> Publish</button>
+        </div>
+        <div class="row gap" style="margin-top:8px">
+          <button id="search" class="btn primary"><span class="material-icons">search</span> Search</button>
+          <button id="toggleTheme" class="btn ghost"><span class="material-icons">dark_mode</span> Theme</button>
+        </div>
+      </div>
 
-    <div class="section">
-      <pre id="output"></pre>
+      <div class="section">
+        <label>Stops (drag to reorder)</label>
+        <div id="stopsList" class="stopsList" aria-live="polite"></div>
+        <div class="muted small">Click map to add stops. Use the reorder buttons to change order.</div>
+      </div>
+
+      <div class="section">
+        <label>Search Results</label>
+        <div id="output">No results yet.</div>
+      </div>
+
+      <footer class="footer muted">Client-only demo • LocalStorage • Prototype</footer>
+    </aside>
+
+    <main id="map"></main>
+
+    <!-- Floating bottom sheet for results -->
+    <div id="bottomSheet" class="bottomSheet hidden" aria-hidden="true">
+      <div class="sheetHeader">
+        <div class="dragHandle"></div>
+        <div class="sheetTitle">Matches</div>
+        <button id="closeSheet" class="iconBtn"><span class="material-icons">close</span></button>
+      </div>
+      <div id="sheetContent" class="sheetContent">No matches</div>
     </div>
   </div>
-
-  <div id="map"></div>
-
-  <script src="app.js"></script>
 </body>
 </html>
