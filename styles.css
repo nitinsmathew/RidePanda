@@ -1,0 +1,40 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+}
+
+#controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  background: #ffffff;
+  border-right: 1px solid #ccc;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 15px;
+}
+
+#output {
+  background: #f4f4f4;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
